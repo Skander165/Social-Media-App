@@ -5,6 +5,7 @@ import Register from "./pages/register/Register";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
 import { useContext } from 'react';
+import Messenger from "./pages/messenger/Messenger";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -13,6 +14,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           {user ? <Home /> : <Login />}
+        </Route>
+        <Route path="/messenger">
+          {!user ? <Redirect to="/" /> : <Messenger />}
         </Route>
         <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}

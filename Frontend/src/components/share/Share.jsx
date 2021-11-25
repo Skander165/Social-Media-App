@@ -1,5 +1,11 @@
 import "./share.css";
-import { PermMedia, Label, Room, EmojiEmotions, Cancel } from "@material-ui/icons";
+import {
+  PermMedia,
+  Label,
+  Room,
+  EmojiEmotions,
+  Cancel,
+} from "@material-ui/icons";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
@@ -25,9 +31,7 @@ export default function Share() {
       console.log(newPost);
       try {
         await axios.post("/upload", data);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) { console.log(error);}
     }
     try {
       await axios.post("/post", newPost);
@@ -57,7 +61,7 @@ export default function Share() {
         {file && (
           <div className="shareImgContainer">
             <img src={URL.createObjectURL(file)} alt="" className="shareImg" />
-            <Cancel className="shareCancelImg" onClick={() => setFile(null)}/>
+            <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
           </div>
         )}
         <form className="shareBottom" onSubmit={submitHandler}>
